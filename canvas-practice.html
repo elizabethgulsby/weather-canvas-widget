@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css" media="screen">
+		#the-canvas {
+			border:  5px black solid;
+			margin:  20px;
+		}
+
+	</style>
+
+
+</head>
+<body>
+
+
+	<canvas id="the-canvas" height="500px" width="500px">
+		<!-- A place for us to draw -->
+	</canvas>
+
+
+
+	<script type="text/javascript">
+		
+	var canvas = document.getElementById('the-canvas');
+	var context = canvas.getContext('2d');
+
+	//make the pen (ink) red
+	context.strokeStyle = '#ff0000';
+
+	//make the line 10 px wide
+	context.lineWidth = 10;
+
+	// Move the pen to x=100, y=100
+	// context.moveTo(100,100);
+
+	//actually create, but not draw, a line (the following params create a wonky 3D star)
+	// context.lineTo(200,200);
+	// context.lineTo(300,100);
+	// context.lineTo(100,200);
+	// context.lineTo(300,150);
+	// context.lineTo(100,100);
+
+	//Fill the line in
+	// context.stroke();
+
+	//draws an arc/circle with the params given
+	// context.beginPath();
+	// context.arc(250, 250, 50, 0*Math.PI, 1.5*Math.PI, true);  //format is center(x,y), start angle, end angle
+	// context.arc(50, 50, 50, 0*Math.PI, 2*Math.PI); 
+	// context.fillStyle = "#0000ff"; //what color the shape will be filled in 
+	// context.fill();  //fills in the circle
+	// context.stroke(); //draws an arc
+
+	//draws a rectangle
+	// context.rect(300, 20, 100, 100);  //x,y,width,height
+	// context.stroke();
+
+	var r = 0;
+	var g = 0;
+	var b = 0;
+	var x = 0;
+	var y = 0;
+	radius = 50;
+	var nx = 1;
+	var ny = 1;
+
+	//using a constructor for ball (see Rob's code for a guide)
+	// function Ball(x.y,radius) {
+	// 	this.x = x;
+	// 	this.y = y;
+	// 	this.radius = radius;
+	// 	this.startAngle = 0 * Math.PI;
+	// 	this.endAngle = 2 * Math.PI;
+	// }
+
+	// var firstBall = new Ball(100, 100, 50) //initializes at (100,100) with a radius of 50
+
+	function draw() {
+		context.fillStyle = '#' +  r + g + b;  //as time passes, the fill will change color
+		context.clearRect(0, 0, 500, 500); //clears out everything in the canvas every time canvas is called
+		context.beginPath();
+		context.arc(x,y, radius,0*Math.PI, Math.PI*2);  //draw arc at 0,0; Math.PI * 2 draws a full circle
+		context.fill();
+		// x += 1;
+		// y += 1;
+		// radius += 1; //increasing the radius before the function and commenting this out makes the ball move rather than grow
+		r += 3;
+		g++;
+		b++;
+		detectBorders();
+
+	}
+
+	var ballInterval = setInterval(draw, 5);
+
+
+	function detectBorders() {
+		// if (x == 450 && y == 450) {
+		// 	x -= 1;
+		// 	y -= 1;
+		// }
+		if (x >= 450) {
+			nx = -1;
+		}
+		if (y >= 450) {
+			ny = -1;
+		}
+		// if (x > 450) {
+		// 	nx = -1;
+		// }
+		// if (y > 450) {
+		// 	ny = -1;
+		// }
+		if (x <= 50) {
+			nx = 1;
+		}
+		if (y <= 50) {
+			ny = 1;
+		}
+		x += nx;
+		y += ny;
+	}
+
+
+
+	</script>
+
+
+</body>
+</html>

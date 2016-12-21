@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<!-- bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- custom css -->
+	<link rel="stylesheet" type="text/css" href="CSS/styles2.css">
+
+<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Include our config file with API key (gitignored) -->
+	<script type="text/javascript" src="JS/config.js"></script>
+
+<!-- custom js -->
+	<script type="text/javascript" src="JS/scripts2.js"></script>
+
+
+</head>
+<body> 
+<div id="container">
+	<div id="row">
+		<div class="col-sm-6 col-sm-offset-3 widget-wrapper">
+			<div class="row current-weather-data">
+				<div id="city">City</div>
+
+				<div id="high-low">hi/low</div>
+
+				<form id="user-input">
+					<label>Enter zip code:</label>
+					<input type="text" id="location" placeholder="Location">
+				</form>
+
+				<div id="refresh">%%</div>
+
+				<div class="current-date">[Date]</div>
+
+				<div class="temperature-holder">
+					<div id="current-temp-image"><!--Condition image --></div>
+					<div id="current-temp">"temp"</div>
+				</div>
+
+			</div>
+				
+			<div class="row forecast-data"> <!--forecast data goes here -->
+				<div class="weekday" id="day-5">day 5</div>
+				<div class="weekday" id="day-4">day 4</div>
+				<div class="weekday" id="day-3">day 3</div>
+				<div class="weekday" id="day-2">day 2</div>
+				<div class="weekday" id="day-1">day 1</div>
+				
+			</div>
+				
+		</div>
+	</div>	
+</div>
+
+</body>
+</html>

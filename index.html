@@ -6,20 +6,33 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- custom css -->
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<!-- <link rel="stylesheet" type="text/css" href="CSS/styles.css"> -->
 
 <!-- jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<!-- API key (has access to all global variables in this file) -->
+<!-- Include our config file with API key (gitignored) -->
 	<script type="text/javascript" src="JS/config.js"></script>
 
 <!-- custom js -->
-	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" src="JS/scripts.js"></script>
 
 
 </head>
-<body>
+<body> <!--add bootstrap! -->
+
+	<form id="weather-form">
+		<label>Please enter location to search</label>
+		<input type="text" id="location" placeholder="Location">
+	</form>
+
+	<div id="current-temp">
+		<!-- Empty -->
+	</div>
+
+	<canvas id="weather-canvas">
+		<!-- Put the temperature in here! -->
+	</canvas>
 
 </body>
 </html>
