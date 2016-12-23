@@ -46,14 +46,23 @@ $(document).ready(function() {
 				var icon = data.weather[0].icon + '.png';
 				$('#current-temp-image').html('<img src="./Weather-Icons/' + icon + '">');
 
+				//want forecast data returned based on zip entered
+				var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey + '&cnt=5';
+
+
+				$.getJSON(forecastURLbyCity, function(data) {
+					console.log(data);
+					var days = data.list; //array of days here
+					//update DOM accordingly in here (i.e. for loops for data [days[i] - each will have its own main, temp, etc])
+				})
+
 			});
 
 		// }
 
 		// else {
-			//want forecast data returned based on zip entered - MOVE ALL VARS OUT OF FIRST AJAX CALL
-			var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey;
-			console.log(forecastURLbyCity);
+			// var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey;
+			// console.log(forecastURLbyCity);
 			//AJAX Call 2) Get 5 day forecast for city
 			// }
 
