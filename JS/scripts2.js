@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 	//2 AJAX calls; both on submit
+
+
 	$('#user-input').submit(function() {
 		//keep form from submitting
 		event.preventDefault();
@@ -32,7 +34,11 @@ $(document).ready(function() {
 				//getting the city name
 				var cityName = data.main.name;
 
-				//getting the current weather description
+				//getting the city ID (for use in forecast data retrieval)
+				var cityID = data.id;
+				console.log(cityID);
+
+				//getting the current weather description (i.e. 'haze', 'partly cloudy')
 				var currConditions = data.weather[0].description;
 				console.log(currConditions); //assign this to a div below the image - make the div!
 
@@ -45,8 +51,8 @@ $(document).ready(function() {
 		// }
 
 		// else {
-			//want forecast data - can only obtain this if city was entered (NEED STATE for accurate results, below URL only returns an arbitrary city - but state not an option for forecast data)
-			var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',us&mode=xml&appid=' + apiKey;
+			//want forecast data returned based on zip entered - MOVE ALL VARS OUT OF FIRST AJAX CALL
+			var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey;
 			console.log(forecastURLbyCity);
 			//AJAX Call 2) Get 5 day forecast for city
 			// }
