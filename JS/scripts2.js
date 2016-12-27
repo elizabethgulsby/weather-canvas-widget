@@ -10,9 +10,6 @@ $(document).ready(function() {
 		//get value of input field by id
 		var location = $('#location').val();
 
-		//checking to see if input is a number AND 5 digits long
-		// if ($.isNumeric(location) == true && location.length == 5) {
-
 			//want current weather data returned based on zip entered (don't forget apiKey at the end of the URL!)
 			var weatherURLbyZIP = 'http://api.openweathermap.org/data/2.5/weather?units=imperial&zip=' + location + ',us&appid=' + apiKey; 
 
@@ -57,20 +54,6 @@ $(document).ready(function() {
 				})
 
 			});
-
-		// }
-
-		// else {
-			// var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey;
-			// console.log(forecastURLbyCity);
-			//AJAX Call 2) Get 5 day forecast for city
-			// }
-
-
-
-
-			
-		
 
 
 
