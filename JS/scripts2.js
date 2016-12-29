@@ -17,19 +17,23 @@ $(document).ready(function() {
 			$.getJSON(weatherURLbyZIP, function(data) {
 				console.log(data);
 
-				//getting the date and formatting it to Month/dd
+				//getting the date and formatting it to day of the week/month/dd
 				var dateInUnix = data.dt;
-				getMonthDay(dateInUnix);
+				console.log(weekdayMonthDay(dateInUnix)); //remove the console.log later
+				$('.current-date').html(weekdayMonthDay(dateInUnix));
 
 				//getting the current temp
-				var currTemp = data.main.temp;
+				var currTemp = Math.round(data.main.temp);
+				$('#current-temp').html(currTemp + '&deg;');
 
 				//getting the daily high/low temp
-				var tempMax = data.main.temp_max;
-				var tempMin = data.main.temp_min;
+				var tempMax = Math.round(data.main.temp_max);
+				var tempMin = Math.round(data.main.temp_min);
+				$('#high-low').html(tempMax + '&deg;' + '/' + tempMin + '&deg;');
 
 				//getting the city name
-				var cityName = data.main.name;
+				var cityName = data.name;
+				$('#city').html(cityName);
 
 				//getting the city ID (for use in forecast data retrieval)
 				var cityID = data.id;
@@ -37,20 +41,38 @@ $(document).ready(function() {
 
 				//getting the current weather description (i.e. 'haze', 'partly cloudy')
 				var currConditions = data.weather[0].description;
-				console.log(currConditions); //assign this to a div below the image - make the div!
+				$('#current-conditions').html(currConditions);
 
 				//getting corresponding icons for current weather description, matching them to local icons of same name
 				var icon = data.weather[0].icon + '.png';
 				$('#current-temp-image').html('<img src="./Weather-Icons/' + icon + '">');
 
-				//want forecast data returned based on zip entered
+
+				//5 DAY FORECAST DATA
+
+				//want 5-day forecast data returned based on zip entered
 				var forecastURLbyCity = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + cityID + '&units=imperial&appid=' + apiKey + '&cnt=5';
 
-
-				$.getJSON(forecastURLbyCity, function(data) {
-					console.log(data);
+				//2nd AJAX call (nested); returning 5-day forecast data
+				$.getJSON(forecastURLbyCity, function(forecastData) {
+					console.log(forecastData);
 					var days = data.list; //array of days here
-					//update DOM accordingly in here (i.e. for loops for data [days[i] - each will have its own main, temp, etc])
+
+					//calling weekdayMonthDay for each day; getting icon for overall weather for the day, each day; daily high/low temps
+					for (var i = 0; i < forecastData.list.length; i++) {
+						var forecastDate = forecastData.list[i].dt;
+						console.log(weekdayMonthDay(forecastDate));
+						$('#day' + (i+1)).html(weekdayMonthDay(forecastDate));
+
+						var forecastIcon = forecastData.list[i].weather[0].icon + '.png';
+						$('#day' + (i+1) + '-icon').html('<img src="./Weather-Icons/' + forecastIcon + '">');
+
+						var dailyHigh = Math.round(forecastData.list[i].temp.max);
+						var dailyLow = Math.round(forecastData.list[i].temp.min);
+						$('.hi-low-daily-' + (i+1)).html(dailyHigh + '&deg;' + '/' + dailyLow + '&deg;')
+					}
+					
+
 				})
 
 			});
@@ -58,14 +80,17 @@ $(document).ready(function() {
 
 
 //FUNCTIONS
-		//returning Month/dd from unix timestamp (dt)
-		function getMonthDay(unixDate) {
+
+		//returning day of the week/month/dd from unix timestamp (dt)
+		function weekdayMonthDay(unixDate) {
+			var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 			var date = new Date(unixDate * 1000);
 			var day = date.getDate();
+			var dayOfWeek = date.getDay();
 			var locale = "en-us";
 			var month = date.toLocaleString(locale, {month: "short"}); //first 3 letters of the month
 
-			newdate = month + " " + day;
+			newdate = daysOfWeek[dayOfWeek] + " " + month + " " + day;
 			return newdate;
 		}
 
