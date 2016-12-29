@@ -29,7 +29,7 @@ $(document).ready(function() {
 				//getting the daily high/low temp
 				var tempMax = Math.round(data.main.temp_max);
 				var tempMin = Math.round(data.main.temp_min);
-				$('#high-low').html(tempMax + '&deg;' + '/' + tempMin + '&deg;');
+				$('#high-low').html(tempMax + '&deg;' + '<br />' + tempMin + '&deg;');
 
 				//getting the city name
 				var cityName = data.name;
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
 						var dailyHigh = Math.round(forecastData.list[i].temp.max);
 						var dailyLow = Math.round(forecastData.list[i].temp.min);
-						$('.hi-low-daily-' + (i+1)).html(dailyHigh + '&deg;' + '/' + dailyLow + '&deg;')
+						$('.hi-low-daily-' + (i+1)).html(dailyHigh + '&deg;' + '<br />' + dailyLow + '&deg;')
 					}
 					
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
 			var locale = "en-us";
 			var month = date.toLocaleString(locale, {month: "short"}); //first 3 letters of the month
 
-			newdate = daysOfWeek[dayOfWeek] + " " + month + " " + day;
+			newdate = daysOfWeek[dayOfWeek] + "<br /> " + month + "<br />" + day;
 			return newdate;
 		}
 
