@@ -43,7 +43,8 @@ form {
 	position: relative;
 	float:  right;
 	top:  400px;
-	left: 33px;
+	left: 64px;
+	height: 60px;
 }
 
 #refresh {
@@ -51,6 +52,13 @@ form {
 	position: relative;
 	float:  right;
 	bottom: 50px;
+	width: 64px;
+	height: 64px;
+}
+
+#refresh img {
+	width: 64px;
+	height: 64px;
 }
 
 .weekday {
@@ -61,7 +69,12 @@ form {
 
 }
 
-#current-temp {
+.weekday img {
+	max-width: 15%;
+	max-height: 15%;
+}
+
+#current-temp, #current-conditions {
 	margin:  auto;
 	text-align: center;
 }
@@ -72,4 +85,12 @@ form {
 	margin:  auto;
 	display: block;
 }
+
+#current-temp-image {
+	text-align: center;
+	width: 350px;
+	height: 350px;
+	margin:  0 auto;
+}
+
 
