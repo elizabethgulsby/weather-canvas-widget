@@ -29,7 +29,8 @@ $(document).ready(function() {
 				//getting the daily high/low temp
 				var tempMax = Math.round(data.main.temp_max);
 				var tempMin = Math.round(data.main.temp_min);
-				$('#high-low').html(tempMax + '&deg;' + '<br />' + tempMin + '&deg;');
+				$('#high-temp').html(tempMax + '&deg;' + '<br />');
+				$('#low-temp').html(tempMin + '&deg;');
 
 				//getting the city name
 				var cityName = data.name;
