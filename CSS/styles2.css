@@ -9,24 +9,62 @@
 	border: 2px solid red;
 	position: relative;
 	height: 75%;
+	background-color: #BDF7FF;
+	color:  black;
+	font-weight: bold;
 }
 
-#city, #high-low {
+#city, #high-temp, #low-temp {
 	border: 1px solid grey;
 }
 
 #city {
-	width: 25%;
+	height: 25%;
+    width: 30%;
+    position: absolute;
+    font-size: 45px;
+  /*   padding-top: 25px; */
+    text-align: center;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
-#high-low {
+#high-temp {
 	float:  left;
+	position: absolute;
+    top: 130px;
+    width: 20%;
+    height: 10%;
+    text-align: center;
+    font-size: 25px;
 }
 
-form {
+#low-temp {
+	float:  left;
+	position: absolute;
+    top: 180px;
+    left: 0px;
+    width: 20%;
+    height: 10%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#form {
 	position: relative;
-	left: 215px;
-    bottom: 20px;
+	left: 185px;
+    bottom: 0px;
+    top: 3px;
+}
+
+input {
+	max-width: 20%;
+	position: relative;
+	margin-left: 5px;
+}
+
+#current-conditions {
+	text-transform: capitalize;
 }
 
 
@@ -36,22 +74,26 @@ form {
 	bottom:  0;
 	width:  100%;
 	height: 25%;
+	color:  black;
+	font-weight: bold;
 }
 
 .current-date {
 	border:  2px solid green;
 	position: relative;
 	float:  right;
-	top:  400px;
+	top:  370px;
 	left: 64px;
-	height: 60px;
+	height: 65px;
+	width: 70px;
+	text-align: center;
 }
 
 #refresh {
 	border:  2px solid green;
 	position: relative;
 	float:  right;
-	bottom: 50px;
+	bottom: 30px;
 	width: 64px;
 	height: 64px;
 }
@@ -66,12 +108,23 @@ form {
 	border:  1px solid pink;
 	width: 20%;
 	height:  100%;
-
+	text-align: center;
+	background-image: url('../DailyBG.png');
+	background-repeat: repeat;
+	background-size: 20%;
 }
 
 .weekday img {
-	max-width: 15%;
-	max-height: 15%;
+	max-width: 45%;
+	max-height: 25%;
+}
+
+.daily-icon {
+	padding: 10px;
+}
+
+.temperature-holder {
+	position: relative;
 }
 
 #current-temp, #current-conditions {
